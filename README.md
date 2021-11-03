@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# LAB 09 - React Router and Material UI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React Router
 
-## Available Scripts
+### Task 1 - routing and linking
 
-In the project directory, you can run:
+1. Create a new component in `components/Bouncer.js`, with a heading containing the text "Bouncer Page"
+2. In this component, add a `Link` component that will redirect to the home page (`/`)
+3. In `App.js`, add a `Route` that will handle the path `/bouncer`, and render the `Bouncer` component in it
+4. In `components/Home.js`, add a `Link` that will redirect to the `/bouncer` page
+5. You should now be able to switch between the `Home` and `Bouncer` pages using the links
 
-### `yarn start`
+### Task 2 - `history.push()`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. In the `components/Bouncer.js` file, use the `useHistory` hook to get the `history` object
+2. Use the `useEffect` hook and a `setTimeout` function to achieve the following effect:
+3. When the user lands on the `Bouncer` page, after a timeout of 5 seconds they get redirected back to the `Home` (`/`) page.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Task 3 - `useLocation()`
 
-### `yarn test`
+1. Create a new component in `components/NotFound.js`, with a heading containing the text "Page Not Found"
+2. In this component, add a `Link` component that will redirect to the home page (`/`)
+3. Use the `useLocation` hook to get the current `location` object
+4. Render a paragraph `<p>`, that will print the current location pathname, in a sentence like `{pathname} not found`
+5. In `App.js`, add a new Route that will match any path with a wildcard (`*`) character and render the `NotFound` component
+6. If you put any random path in the browser like `localhost:3000/invalid/page/`, you should se the text "/invalid/page/ not found"
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Task 4 - `useParams()`
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. In the `components/Home.js` file add a `form` with one `input` with the `label` of "Your favourite artist", and one submit `button` with the label of "Search"
+2. Add an `onSubmit` handler to the form, which takes the value from the `input` and uses it in a `history.push()` call, redirecting to `/artist/{value from input}`. If I submit `Madonna` to the form, it should redirect me to `/artist/Madonna`
+3. Create a new component in `components/Artist.js`
+4. Use the `useParams()` hook to get the `name` param from the page. Render a heading (`h1`) with the `name` parameter as text.
+5. Bonus: Use `axios` in a `useEffect` hook to call `https://www.theaudiodb.com/api/v1/json/1/search.php?s=` + the `name` parameter.
