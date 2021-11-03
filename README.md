@@ -31,4 +31,21 @@
 2. Add an `onSubmit` handler to the form, which takes the value from the `input` and uses it in a `history.push()` call, redirecting to `/artist/{value from input}`. If I submit `Madonna` to the form, it should redirect me to `/artist/Madonna`
 3. Create a new component in `components/Artist.js`
 4. Use the `useParams()` hook to get the `name` param from the page. Render a heading (`h1`) with the `name` parameter as text.
-5. Bonus: Use `axios` in a `useEffect` hook to call `https://www.theaudiodb.com/api/v1/json/1/search.php?s=` + the `name` parameter.
+5. Use `axios` in a `useEffect` hook to call `https://www.theaudiodb.com/api/v1/json/1/search.php?s=` + the `name` parameter. (For "Madonna" it will look like this: `https://www.theaudiodb.com/api/v1/json/1/search.php?s=Madonna`)
+6. Save the resulting data from the API and print them in the component using `JSON.stringify()`
+7. In `App.js`, add a new `Route` matching `/artist/:name` and render the `Artist` component in it.
+
+### Task 5
+
+1. Use the `Card` component from the Material UI library (`@mui/material`) to make the artist component look pretty.
+2. Use the `CardMedia` element to show the `strArtistThumb` image
+3. Use the `CardContent` element to show additional data like `strLabel` or `strCountry`
+4. Use the `CardActions` component together with the `Chip` component to render the `strStyle`, `strGenre` and `strMood` fields
+5. The resulting image could look like this:
+
+![image](public/madonna.png)
+
+### Task 6 - Bonus
+
+1. Use other components from the Material UI library to prettify the rest of the page. There's no specific guidance, be creative.
+2. You could use the `Container` elements to center the content and limit the maximum width, use `AppBar` component to give proper headers to all the pages, or use the nice input for the form on the Home page.
